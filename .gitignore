@@ -1,0 +1,6 @@
+# Local Claude Code settings (contains machine-specific paths)
+.claude/settings.local.json
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
