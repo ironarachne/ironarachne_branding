@@ -78,8 +78,33 @@ Consequences, which are not negotiable:
 headings. The wordmark ships as outlines, so the font isn't needed to render
 it. Only install the font if you're setting new display text.
 
-**system-ui / Helvetica / sans-serif** — body and UI. Deliberately neutral;
-the display face carries the character and shouldn't compete with itself.
+**Inclusive Sans** (SIL OFL 1.1, Olivia King, v2.004) — body copy and UI.
+Vendored in `fonts/` as variable woff2, roman and italic, with a 300–700 weight
+axis. Two files cover every weight; don't add static cuts.
+
+```css
+@font-face {
+  font-family: "Inclusive Sans";
+  src: url("fonts/InclusiveSans-Variable.woff2") format("woff2-variations");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inclusive Sans";
+  src: url("fonts/InclusiveSans-Italic-Variable.woff2") format("woff2-variations");
+  font-weight: 300 700;
+  font-style: italic;
+  font-display: swap;
+}
+```
+
+Stack: `"Inclusive Sans", system-ui, Helvetica, sans-serif`. Keep the fallbacks
+— the font is a body face and the page must stay readable before it loads.
+
+Use real weights from the axis rather than letting the browser synthesise them,
+and use the italic file rather than letting it slant the roman. Faux bold and
+faux italic undo the legibility work this face was picked for.
 
 Never set the wordmark by typing "Iron Arachne" in Cinzel Decorative. Use the
 outlined file — the master has tracking applied that live text won't match.

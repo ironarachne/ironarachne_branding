@@ -27,7 +27,7 @@ logo/
   web-icons/        generated favicon + app icon set
   src/              editable masters (Affinity, Photoshop, legacy SVG)
   archive/          retired marks, kept as brand history
-fonts/              Cinzel Decorative + its OFL licence, vendored
+fonts/              Cinzel Decorative + Inclusive Sans, vendored with licences
 scripts/            build scripts — see GUIDELINES.md § Rebuilding
 ```
 
@@ -38,6 +38,10 @@ scripts/            build scripts — see GUIDELINES.md § Rebuilding
   backgrounds. See [`GUIDELINES.md`](GUIDELINES.md#colour).
 - **Wordmark** is Cinzel Decorative (SIL OFL), shipped as outlines so the font
   isn't needed to render it. The font is vendored in `fonts/` for rebuilds.
+- **Body text** is Inclusive Sans (SIL OFL), vendored as variable woff2. Picked
+  for character-level legibility, because generated names give the reader no
+  context to disambiguate glyphs from. See
+  [`GUIDELINES.md`](GUIDELINES.md#typography) for the `@font-face` block.
 - **Everything is SVG.** Generate rasters at the size you need; don't commit
   new fixed-size exports.
 
@@ -45,7 +49,15 @@ scripts/            build scripts — see GUIDELINES.md § Rebuilding
 
 The Iron Arachne name and marks are project assets, not open-licensed artwork.
 
-Cinzel Decorative is SIL OFL 1.1 by Natanael Gama, vendored in `fonts/` with
-its licence text as OFL clause 2 requires. The wordmark outlines derive from
-it, which the licence permits; the Reserved Font Name restriction applies to
-the font software, not to artwork set in it.
+Both vendored fonts are SIL OFL 1.1, each with its licence text alongside it in
+`fonts/` as OFL clause 2 requires.
+
+**Cinzel Decorative** — Natanael Gama, `fonts/OFL-CinzelDecorative.txt`. The
+wordmark outlines derive from it, which the licence permits; the Reserved Font
+Name restriction applies to the font software, not to artwork set in it.
+
+**Inclusive Sans** — Olivia King, `fonts/OFL-InclusiveSans.txt`. Upstream is
+[LivKing/Inclusive-Sans](https://github.com/LivKing/Inclusive-Sans); the
+vendored files are v2.004, renamed from upstream's `InclusiveSans[wght].woff2`
+and `InclusiveSans-Italic[wght].woff2` so the paths are URL-safe. This font
+declares no Reserved Font Name.

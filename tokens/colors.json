@@ -41,8 +41,13 @@
       "use": "Wordmark, headings. The wordmark ships as outlines; the font is not required to render it."
     },
     "body": {
-      "family": "system-ui, Helvetica, sans-serif",
-      "use": "Body copy, UI. Deliberately neutral so the display face carries the character."
+      "family": "Inclusive Sans, system-ui, Helvetica, sans-serif",
+      "license": "SIL OFL 1.1",
+      "designer": "Olivia King",
+      "version": "2.004",
+      "axes": { "wght": [300, 700] },
+      "use": "Body copy, UI. Chosen for character-level legibility; the display face still carries the character.",
+      "files": ["fonts/InclusiveSans-Variable.woff2", "fonts/InclusiveSans-Italic-Variable.woff2"]
     }
   }
 }
