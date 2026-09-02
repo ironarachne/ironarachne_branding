@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Iron Arachne — Brand Specimen</title>
+<link rel="stylesheet" href="tokens/colors.css">
+<style>
+  /* The specimen shows both surfaces side by side on purpose, so it pins its
+     own light/dark panels instead of following prefers-color-scheme. */
+  @font-face {
+    font-family: "Inclusive Sans";
+    src: url("fonts/InclusiveSans-Variable.woff2") format("woff2-variations");
+    font-weight: 300 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Inclusive Sans";
+    src: url("fonts/InclusiveSans-Italic-Variable.woff2") format("woff2-variations");
+    font-weight: 300 700;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: "Cinzel Decorative";
+    src: url("fonts/CinzelDecorative-Regular.woff") format("woff");
+    font-weight: 400;
+  }
+
+  * { box-sizing: border-box; }
+  html { color-scheme: light; }
+  body {
+    margin: 0;
+    font: 400 16px/1.5 "Inclusive Sans", system-ui, Helvetica, sans-serif;
+    color: var(--ia-charcoal);
+    background: #fff;
+  }
+  main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+  h1, h2, h3 { font-family: "Cinzel Decorative", serif; font-weight: 400; letter-spacing: 0.02em; }
+  h1 { font-size: 1.75rem; margin: 0 0 0.25rem; }
+  h2 { font-size: 1.25rem; margin: 3rem 0 0.75rem; padding-top: 1.5rem; border-top: 1px solid var(--ia-granite); }
+  h3 { font-size: 0.95rem; margin: 1.5rem 0 0.5rem; }
+  p.lede { margin: 0 0 1rem; color: var(--ia-granite); }
+  p.note { font-size: 0.875rem; color: var(--ia-granite); max-width: 70ch; }
+  code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.85em; }
+
+  .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .panel {
+    padding: 2rem;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--ia-granite);
+    min-height: 160px;
+  }
+  .panel.light { background: #fff; }
+  .panel.dark  { background: var(--ia-charcoal); }
+  .panel img { display: block; max-width: 100%; }
+  .caption { font-size: 0.8rem; color: var(--ia-granite); margin: 0.35rem 0 0; }
+  .caption code { color: inherit; }
+
+  /* Minimum-size and scale rows */
+  .row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 2rem; padding: 1.5rem; border: 1px solid var(--ia-granite); }
+  .row.dark { background: var(--ia-charcoal); }
+  .row.dark .caption { color: #aab; }
+  .row figure { margin: 0; text-align: center; }
+  .row img { display: block; margin: 0 auto; image-rendering: auto; }
+  .row img.crisp { image-rendering: pixelated; }
+
+  /* Palette */
+  table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid #e3e5e9; vertical-align: middle; }
+  th { font-weight: 600; }
+  .swatch { display: inline-block; width: 2.5rem; height: 1.5rem; border: 1px solid #0002; vertical-align: middle; border-radius: 2px; }
+  .sample { font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 2px; white-space: nowrap; }
+  .pass { color: var(--ia-emerald); font-weight: 600; }
+  .fail { color: var(--ia-crimson); font-weight: 600; }
+  .warn { color: #8a6d1d; font-weight: 600; }
+
+  /* Type */
+  .type-block { display: grid; gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+  .type-block > div { padding: 1.5rem; border: 1px solid var(--ia-granite); }
+  .type-block .dark { background: var(--ia-charcoal); color: #fff; }
+  .display { font-family: "Cinzel Decorative", serif; font-size: 2.5rem; line-height: 1.1; margin: 0 0 1rem; }
+  .w300 { font-weight: 300; } .w400 { font-weight: 400; } .w500 { font-weight: 500; }
+  .w600 { font-weight: 600; } .w700 { font-weight: 700; }
+  .confusables { font-size: 2rem; letter-spacing: 0.05em; margin: 0.5rem 0; }
+  .type-block p { margin: 0.35rem 0; }
+  .tagline { font-family: "Cinzel Decorative", serif; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.9rem; }
+
+  /* Icon set */
+  .icons { display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: flex-end; padding: 1.5rem; border: 1px solid var(--ia-granite); background: #fff; }
+  .icons figure { margin: 0; text-align: center; }
+  .icons img { display: block; margin: 0 auto 0.25rem; }
+  @media (max-width: 700px) { .type-block { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Iron Arachne — Brand Specimen</h1>
+  <p class="lede">Every asset in this repository, rendered from the files in <code>logo/</code>, <code>fonts/</code>, and <code>tokens/</code>. Open it after any rebuild; if something here looks wrong, the artwork is wrong.</p>
+  <p class="note">Rules and reasoning live in <code>GUIDELINES.md</code> and <code>BRAND.md</code>. This page only shows; it does not explain.</p>
+
+  <h2>Primary lockups</h2>
+  <div class="grid">
+    <div>
+      <div class="panel light"><img src="logo/primary/lockup-horizontal.svg" alt="Horizontal lockup, green glyph with charcoal type, on white"></div>
+      <p class="caption"><code>lockup-horizontal.svg</code> — default, light surfaces</p>
+    </div>
+    <div>
+      <div class="panel dark"><img src="logo/primary/lockup-horizontal-green.svg" alt="Horizontal lockup, all green, on charcoal"></div>
+      <p class="caption"><code>lockup-horizontal-green.svg</code> — dark surfaces</p>
+    </div>
+    <div>
+      <div class="panel light"><img src="logo/primary/lockup-horizontal-mono.svg" alt="Horizontal lockup in one colour"></div>
+      <p class="caption"><code>lockup-horizontal-mono.svg</code> — one-colour print</p>
+    </div>
+    <div>
+      <div class="panel light"><img src="logo/primary/lockup-stacked.svg" alt="Stacked lockup on white" style="max-height:220px"></div>
+      <p class="caption"><code>lockup-stacked.svg</code></p>
+    </div>
+    <div>
+      <div class="panel dark"><img src="logo/primary/lockup-stacked-green.svg" alt="Stacked lockup, all green, on charcoal" style="max-height:220px"></div>
+      <p class="caption"><code>lockup-stacked-green.svg</code></p>
+    </div>
+    <div>
+      <div class="panel light"><img src="logo/primary/lockup-stacked-mono.svg" alt="Stacked lockup in one colour" style="max-height:220px"></div>
+      <p class="caption"><code>lockup-stacked-mono.svg</code></p>
+    </div>
+  </div>
+
+  <h2>Minimum sizes</h2>
+  <p class="note">Each asset at its documented floor. If the artwork does not resolve here, the floor is wrong.</p>
+  <div class="row">
+    <figure><img src="logo/primary/lockup-horizontal.svg" width="200" alt=""><figcaption class="caption">Horizontal, 200 px</figcaption></figure>
+    <figure><img src="logo/primary/lockup-stacked.svg" width="140" alt=""><figcaption class="caption">Stacked, 140 px</figcaption></figure>
+    <figure><img src="logo/glyph/glyph-green.svg" height="64" alt=""><figcaption class="caption">Full glyph, 64 px</figcaption></figure>
+    <figure><img src="logo/glyph/glyph-simple-green.svg" height="16" alt=""><figcaption class="caption">Simplified, 16 px</figcaption></figure>
+  </div>
+
+  <h2>Glyph</h2>
+  <div class="grid">
+    <div>
+      <div class="panel light"><img src="logo/glyph/glyph-green.svg" height="160" alt="Green glyph with charcoal keyline on white"></div>
+      <p class="caption"><code>glyph-green.svg</code> — the keyline carries the contrast on light</p>
+    </div>
+    <div>
+      <div class="panel dark"><img src="logo/glyph/glyph-green.svg" height="160" alt="Green glyph on charcoal"></div>
+      <p class="caption"><code>glyph-green.svg</code> — on charcoal the keyline dissolves into the ground</p>
+    </div>
+    <div>
+      <div class="panel light"><img src="logo/glyph/glyph-black.svg" height="160" alt="Charcoal glyph"></div>
+      <p class="caption"><code>glyph-black.svg</code></p>
+    </div>
+    <div>
+      <div class="panel light"><img src="logo/glyph/glyph-simple-black.svg" height="160" alt="Simplified glyph, charcoal"></div>
+      <p class="caption"><code>glyph-simple-black.svg</code> — carapace and star only</p>
+    </div>
+  </div>
+
+  <h3>Full glyph vs simplified glyph at icon sizes, on charcoal</h3>
+  <p class="note">The build switches to the simplified mark below 32 px. Both are shown at each size so the crossover can be judged by eye.</p>
+  <div class="row dark">
+    <figure><img src="logo/glyph/icon-master.svg" width="64" height="64" alt=""><figcaption class="caption">full, 64</figcaption></figure>
+    <figure><img src="logo/glyph/icon-master.svg" width="48" height="48" alt=""><figcaption class="caption">full, 48</figcaption></figure>
+    <figure><img src="logo/glyph/icon-master.svg" width="32" height="32" alt=""><figcaption class="caption">full, 32</figcaption></figure>
+    <figure><img src="logo/glyph/icon-master.svg" width="16" height="16" alt=""><figcaption class="caption">full, 16</figcaption></figure>
+    <figure><img src="logo/glyph/icon-master-small.svg" width="32" height="32" alt=""><figcaption class="caption">simple, 32</figcaption></figure>
+    <figure><img src="logo/glyph/icon-master-small.svg" width="16" height="16" alt=""><figcaption class="caption">simple, 16</figcaption></figure>
+  </div>
+
+  <h2>Wordmark</h2>
+  <div class="panel light" style="padding:2rem 3rem"><img src="logo/wordmark/wordmark-black.svg" alt="Iron Arachne wordmark, outlined Cinzel Decorative"></div>
+  <p class="caption"><code>wordmark-black.svg</code> — outlined, kerned from the font's GPOS table, with 0.02 em tracking. The I's flourish must be complete at the left edge.</p>
+  <div class="panel dark" style="padding:2rem 3rem; margin-top:1rem"><img src="logo/wordmark/wordmark-green.svg" alt="Iron Arachne wordmark in green on charcoal"></div>
+  <p class="caption"><code>wordmark-green.svg</code></p>
+
+  <h2>Web icons</h2>
+  <p class="note">Generated by <code>scripts/build-icons.py</code>. All are flattened onto charcoal, shown here on white to prove they survive a light tab bar.</p>
+  <div class="icons">
+    <figure><img src="logo/web-icons/favicon-16x16.png" width="16" height="16" alt=""><figcaption class="caption">16</figcaption></figure>
+    <figure><img src="logo/web-icons/favicon-32x32.png" width="32" height="32" alt=""><figcaption class="caption">32</figcaption></figure>
+    <figure><img src="logo/web-icons/android-icon-48x48.png" width="48" height="48" alt=""><figcaption class="caption">48</figcaption></figure>
+    <figure><img src="logo/web-icons/android-icon-72x72.png" width="72" height="72" alt=""><figcaption class="caption">72</figcaption></figure>
+    <figure><img src="logo/web-icons/favicon-96x96.png" width="96" height="96" alt=""><figcaption class="caption">96</figcaption></figure>
+    <figure><img src="logo/web-icons/apple-icon-180x180.png" width="180" height="180" alt=""><figcaption class="caption">180 (Apple)</figcaption></figure>
+    <figure><img src="logo/web-icons/android-icon-192x192.png" width="192" height="192" alt=""><figcaption class="caption">192 (Android)</figcaption></figure>
+  </div>
+
+  <h2>Colour</h2>
+  <p class="note">Contrast ratios from <code>tokens/colors.json</code>, WCAG 2.1. Text samples are set live in each colour so the numbers can be checked against the eye.</p>
+  <table>
+    <thead><tr><th>Token</th><th>Hex</th><th>On white</th><th>On charcoal</th><th>Role</th></tr></thead>
+    <tbody>
+      <tr><td><span class="swatch" style="background:var(--ia-green)"></span> <code>--ia-green</code></td><td>#76e841</td>
+          <td><span class="sample" style="color:var(--ia-green);background:#fff">Aa</span> <span class="fail">1.57</span></td>
+          <td><span class="sample" style="color:var(--ia-green);background:var(--ia-charcoal)">Aa</span> <span class="pass">10.65</span></td><td>Primary. Dark surfaces only for text.</td></tr>
+      <tr><td><span class="swatch" style="background:var(--ia-green-acid)"></span> <code>--ia-green-acid</code></td><td>#9eff5b</td>
+          <td><span class="sample" style="color:var(--ia-green-acid);background:#fff">Aa</span> <span class="fail">1.24</span></td>
+          <td><span class="sample" style="color:var(--ia-green-acid);background:var(--ia-charcoal)">Aa</span> <span class="pass">13.44</span></td><td>Hover, highlight on dark.</td></tr>
+      <tr><td><span class="swatch" style="background:var(--ia-charcoal)"></span> <code>--ia-charcoal</code></td><td>#1b1e24</td>
+          <td><span class="sample" style="color:var(--ia-charcoal);background:#fff">Aa</span> <span class="pass">16.70</span></td><td>—</td><td>The brand's black. Keyline colour.</td></tr>
+      <tr><td><span class="swatch" style="background:var(--ia-slate)"></span> <code>--ia-slate</code></td><td>#2a2f38</td>
+          <td><span class="sample" style="color:var(--ia-slate);background:#fff">Aa</span> <span class="pass">13.44</span></td><td>—</td><td>Raised dark surface.</td></tr>
+      <tr><td><span class="swatch" style="background:var(--ia-granite)"></span> <code>--ia-granite</code></td><td>#3c4350</td>
+          <td><span class="sample" style="color:var(--ia-granite);background:#fff">Aa</span> <span class="pass">9.95</span></td><td>—</td><td>Borders, muted text on light.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Accents</h3>
+  <p class="note">Domain tints. Never applied to the mark. Several fail for text on one surface or the other; that is a known open question, not a specimen error.</p>
+  <table>
+    <thead><tr><th>Token</th><th>Hex</th><th>On white</th><th>On charcoal</th><th>Domain</th></tr></thead>
+    <tbody>
+      <tr><td><span class="swatch" style="background:var(--ia-gold)"></span> <code>--ia-gold</code></td><td>#c8a46e</td><td><span class="sample" style="color:var(--ia-gold);background:#fff">Aa</span> <span class="fail">2.34</span></td><td><span class="sample" style="color:var(--ia-gold);background:var(--ia-charcoal)">Aa</span> <span class="pass">7.15</span></td><td>fantasy, heraldry</td></tr>
+      <tr><td><span class="swatch" style="background:var(--ia-tan)"></span> <code>--ia-tan</code></td><td>#5c5031</td><td><span class="sample" style="color:var(--ia-tan);background:#fff">Aa</span> <span class="pass">7.93</span></td><td><span class="sample" style="color:var(--ia-tan);background:var(--ia-charcoal)">Aa</span> <span class="fail">2.10</span></td><td>maps, parchment</td></tr>
+      <tr><td><span class="swatch" style="background:var(--ia-emerald)"></span> <code>--ia-emerald</code></td><td>#2f6b4f</td><td><span class="sample" style="color:var(--ia-emerald);background:#fff">Aa</span> <span class="pass">6.29</span></td><td><span class="sample" style="color:var(--ia-emerald);background:var(--ia-charcoal)">Aa</span> <span class="fail">2.65</span></td><td>nature, wilderness</td></tr>
+      <tr><td><span class="swatch" style="background:var(--ia-crimson)"></span> <code>--ia-crimson</code></td><td>#8b3a3a</td><td><span class="sample" style="color:var(--ia-crimson);background:#fff">Aa</span> <span class="pass">7.60</span></td><td><span class="sample" style="color:var(--ia-crimson);background:var(--ia-charcoal)">Aa</span> <span class="fail">2.20</span></td><td>combat, danger</td></tr>
+      <tr><td><span class="swatch" style="background:var(--ia-amethyst)"></span> <code>--ia-amethyst</code></td><td>#6c2dbd</td><td><span class="sample" style="color:var(--ia-amethyst);background:#fff">Aa</span> <span class="pass">7.64</span></td><td><span class="sample" style="color:var(--ia-amethyst);background:var(--ia-charcoal)">Aa</span> <span class="fail">2.18</span></td><td>magic, arcane</td></tr>
+      <tr><td><span class="swatch" style="background:var(--ia-cyan)"></span> <code>--ia-cyan</code></td><td>#39d0ff</td><td><span class="sample" style="color:var(--ia-cyan);background:#fff">Aa</span> <span class="fail">1.80</span></td><td><span class="sample" style="color:var(--ia-cyan);background:var(--ia-charcoal)">Aa</span> <span class="pass">9.25</span></td><td>sci-fi, tech</td></tr>
+      <tr><td><span class="swatch" style="background:var(--ia-plasma-blue)"></span> <code>--ia-plasma-blue</code></td><td>#4286f4</td><td><span class="sample" style="color:var(--ia-plasma-blue);background:#fff">Aa</span> <span class="warn">3.53</span></td><td><span class="sample" style="color:var(--ia-plasma-blue);background:var(--ia-charcoal)">Aa</span> <span class="pass">4.73</span></td><td>starships, systems</td></tr>
+      <tr><td><span class="swatch" style="background:var(--ia-magenta)"></span> <code>--ia-magenta</code></td><td>#ff4fd6</td><td><span class="sample" style="color:var(--ia-magenta);background:#fff">Aa</span> <span class="fail">2.86</span></td><td><span class="sample" style="color:var(--ia-magenta);background:var(--ia-charcoal)">Aa</span> <span class="pass">5.84</span></td><td>anomalies, exotica</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Typography</h2>
+  <div class="type-block">
+    <div>
+      <p class="display">Settlement of Vaskereth</p>
+      <p class="tagline">Weave Your Universe</p>
+      <p class="caption">Cinzel Decorative, display and tagline</p>
+      <hr style="border:0;border-top:1px solid #e3e5e9;margin:1rem 0">
+      <p class="w300">300 — Generates a settlement with population, government, and notable buildings.</p>
+      <p class="w400">400 — Generates a settlement with population, government, and notable buildings.</p>
+      <p class="w500">500 — Generates a settlement with population, government, and notable buildings.</p>
+      <p class="w600">600 — Generates a settlement with population, government, and notable buildings.</p>
+      <p class="w700">700 — Generates a settlement with population, government, and notable buildings.</p>
+      <p><em>Italic — from the italic file, not a slanted roman.</em></p>
+      <p class="caption">Inclusive Sans, variable weight axis</p>
+    </div>
+    <div class="dark">
+      <p class="display" style="color:var(--ia-green)">Kel-Oryn IV</p>
+      <p class="tagline" style="color:var(--ia-green)">Weave Your Universe</p>
+      <p class="caption" style="color:#aab">Display in brand green on charcoal</p>
+      <hr style="border:0;border-top:1px solid var(--ia-granite);margin:1rem 0">
+      <p class="confusables">Ilyria llyria 1lyria</p>
+      <p class="confusables">O5-Vaan 05-Vaan</p>
+      <p class="confusables">bdellium pqoq</p>
+      <p class="caption" style="color:#aab">Confusable glyphs: I / l / 1, O / 0, b / d / p / q must each be distinct at a glance</p>
+    </div>
+  </div>
+</main>
+</body>
+</html>

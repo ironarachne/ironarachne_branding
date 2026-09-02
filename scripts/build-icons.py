@@ -6,8 +6,12 @@ out of sync with the site's static/ directory (24 of 26 files differed).
 Generating them here from logo/glyph makes the branding repo authoritative
 and the drift reproducible away.
 
-Apple icons are flattened onto charcoal: iOS composites its own mask and
-handles alpha poorly, so a transparent apple-icon renders on black.
+Every icon is flattened onto charcoal. The brand green is a dark-surface
+colour (1.57:1 on white), so a transparent icon on a light tab bar or home
+screen fails the one colour rule the guidelines call non-negotiable. The
+charcoal square is the mark's native ground and travels with it. iOS also
+composites its own mask and handles alpha poorly, so this was already the
+rule for the Apple set.
 """
 
 import json
@@ -22,10 +26,13 @@ OUT = ROOT / "logo" / "web-icons"
 CHARCOAL = "#1b1e24"
 GLYPH_SCALE = 0.82  # glyph height as a fraction of the icon square
 
-# Below this size the full glyph's legs and gears collapse into a solid
-# blob — measured, not guessed: at 16px it is unreadable and at 32px the
-# gears are mud. Small icons use the simplified carapace mark instead.
-SIMPLIFY_BELOW = 64
+# Below this size the full glyph's legs collapse into noise — measured, not
+# guessed: on the charcoal backing the spider still reads at 32px, but at
+# 16px it is an undifferentiated blob. Icons under 32px use the simplified
+# carapace mark instead. (The 64px floor in GUIDELINES.md is for the glyph
+# on arbitrary backgrounds, where the keyline has to do the work; here the
+# ground is known.)
+SIMPLIFY_BELOW = 32
 
 ANDROID = [36, 48, 72, 96, 144, 192]
 APPLE = [57, 60, 72, 76, 114, 120, 144, 152, 180]
@@ -41,6 +48,7 @@ def icon_master(source: Path, out_name: str) -> Path:
     vb = [float(v) for v in re.search(r'viewBox="([^"]+)"', svg).group(1).split()]
     body = re.sub(r"^.*?<svg[^>]*>", "", svg, flags=re.S)
     body = re.sub(r"</svg>\s*$", "", body, flags=re.S)
+    body = re.sub(r"<title\b.*?</title>", "", body, flags=re.S).strip()
 
     size = 512.0
     h = size * GLYPH_SCALE
@@ -60,11 +68,12 @@ def icon_master(source: Path, out_name: str) -> Path:
     return out
 
 
-def render(master: Path, size: int, dest: Path, background: str | None) -> None:
-    cmd = ["rsvg-convert", "-w", str(size), "-h", str(size), str(master), "-o", str(dest)]
-    if background:
-        cmd[1:1] = ["-b", background]
-    subprocess.run(cmd, check=True)
+def render(master: Path, size: int, dest: Path) -> None:
+    subprocess.run(
+        ["rsvg-convert", "-b", CHARCOAL, "-w", str(size), "-h", str(size),
+         str(master), "-o", str(dest)],
+        check=True,
+    )
 
 
 def main() -> None:
@@ -77,19 +86,19 @@ def main() -> None:
         return small if size < SIMPLIFY_BELOW else full
 
     for s in ANDROID:
-        render(pick(s), s, OUT / f"android-icon-{s}x{s}.png", None)
+        render(pick(s), s, OUT / f"android-icon-{s}x{s}.png")
         count += 1
     for s in APPLE:
-        render(pick(s), s, OUT / f"apple-icon-{s}x{s}.png", CHARCOAL)
+        render(pick(s), s, OUT / f"apple-icon-{s}x{s}.png")
         count += 1
-    render(full, 180, OUT / "apple-icon.png", CHARCOAL)
-    render(full, 180, OUT / "apple-icon-precomposed.png", CHARCOAL)
+    render(full, 180, OUT / "apple-icon.png")
+    render(full, 180, OUT / "apple-icon-precomposed.png")
     count += 2
     for s in FAVICON:
-        render(pick(s), s, OUT / f"favicon-{s}x{s}.png", None)
+        render(pick(s), s, OUT / f"favicon-{s}x{s}.png")
         count += 1
     for s in MS:
-        render(pick(s), s, OUT / f"ms-icon-{s}x{s}.png", None)
+        render(pick(s), s, OUT / f"ms-icon-{s}x{s}.png")
         count += 1
 
     subprocess.run(

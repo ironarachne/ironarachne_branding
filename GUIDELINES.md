@@ -4,6 +4,8 @@ Rules for using the marks. Every number here was measured against the actual
 artwork, not chosen by eye — where a threshold exists, the reason is given.
 
 For the reasoning behind the identity itself, see [`BRAND.md`](BRAND.md).
+To see every asset rendered at once, open [`specimen.html`](specimen.html) in
+a browser — check it after any rebuild.
 
 ---
 
@@ -34,11 +36,15 @@ Below these the artwork stops resolving. These are floors, not targets.
 | Full glyph | **64 px** tall | 12 mm |
 | Simplified glyph | **16 px** tall | 4 mm |
 
-**Why 64px for the full glyph.** Below it the legs and gears merge into a solid
-shape: at 32px the gears are indistinct, and at 16px the mark is an
-undifferentiated blob with no spider legible at all. The simplified glyph —
-the carapace and star alone — is drawn from the same artwork and holds down to
-16px. `scripts/build-icons.py` switches between them automatically.
+**Why 64px for the full glyph.** Below it, on an arbitrary background, the
+legs and gears merge into a solid shape and the keyline has nothing to work
+against. The simplified glyph — the carapace and star alone — is drawn from the
+same artwork and holds down to 16px.
+
+The web icons are a special case: they are always flattened onto charcoal, and
+on that known ground the full spider still reads at 32px. So
+`scripts/build-icons.py` uses the full glyph from 32px up and the simplified
+mark only at 16px. Don't generalise that lower floor to other uses.
 
 ## Clear space
 
@@ -67,7 +73,9 @@ Consequences, which are not negotiable:
 - **Never set green text on white.** It fails AA by a wide margin.
 - **The charcoal keyline is structural.** On light backgrounds the green fill
   only reads because the outline carries the contrast. Don't remove it, don't
-  lighten it, don't replace it with the green.
+  lighten it, don't replace it with the green. It is `--ia-charcoal` exactly,
+  so on a charcoal surface it dissolves into the ground and the glyph reads as
+  green shapes alone — that is intended.
 - On dark surfaces the green may be used freely, including for text.
 - Use `--ia-charcoal` `#1b1e24`, never `#000000`. Pure black flattens the
   keyline against the green and reads harsh on screen.
@@ -107,7 +115,8 @@ and use the italic file rather than letting it slant the roman. Faux bold and
 faux italic undo the legibility work this face was picked for.
 
 Never set the wordmark by typing "Iron Arachne" in Cinzel Decorative. Use the
-outlined file — the master has tracking applied that live text won't match.
+outlined file — the master is kerned from the font's own pair table and then
+tracked open by 0.02 em for logo use, which live text won't reproduce.
 
 ## Misuse
 
@@ -130,15 +139,23 @@ python3 scripts/build-lockups.py    # composes horizontal + stacked lockups
 python3 scripts/build-icons.py      # regenerates the web icon set
 ```
 
-Run all three after changing a master. Cinzel Decorative is vendored in
-`fonts/` with its licence, so the repo rebuilds standalone — nothing needs to
-be installed and the site repo doesn't need to be checked out.
+Run all three after changing a master, then open `specimen.html` and look.
+Cinzel Decorative is vendored in `fonts/` with its licence, so the repo
+rebuilds standalone — nothing needs to be installed and the site repo doesn't
+need to be checked out.
+
+The keyline in `logo/glyph/glyph-*.svg` must stay `#1b1e24`. The vendor files
+used a near-black (`#020301`) that made the mono lockups two different blacks
+and killed the keyline on dark surfaces; if a re-export from the Affinity
+master brings it back, fix the fill before rebuilding.
 
 Requires Python 3 with `fonttools`, plus `rsvg-convert` and ImageMagick.
 
 ## Keeping the site in sync
 
 `logo/web-icons/` is the source of truth for the site's `static/` directory.
+Every icon in it is flattened onto charcoal — the green fails on a light tab
+bar otherwise, and iOS composites transparent icons badly anyway.
 These drifted apart before — 24 of 26 files differed — because icons were
 generated once by an online tool and then edited in place on both sides. Copy
 from here to the site; never the other direction.

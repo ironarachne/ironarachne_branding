@@ -11,12 +11,14 @@ roleplaying games.
 | [`BRAND.md`](BRAND.md) | Positioning, audience, personality, voice — why the identity is what it is |
 | [`GUIDELINES.md`](GUIDELINES.md) | Which file to use, minimum sizes, clear space, colour rules, misuse |
 | [`tokens/`](tokens/) | Colour tokens as CSS and JSON — the single source of truth |
+| [`specimen.html`](specimen.html) | Every asset rendered on one page — open it after a rebuild |
 
 ## Layout
 
 ```
 BRAND.md            strategy: the decisions everything else follows from
 GUIDELINES.md       usage rules, all measured against the artwork
+specimen.html       visual check: lockups, sizes, icons, palette, type
 tokens/
   colors.css        CSS custom properties, with contrast notes
   colors.json       machine-readable twin
@@ -24,7 +26,7 @@ logo/
   primary/          horizontal + stacked lockups (green / black / mono)
   glyph/            spider mark alone, plus the simplified small-size mark
   wordmark/         outlined type alone
-  web-icons/        generated favicon + app icon set
+  web-icons/        generated favicon + app icon set, all on charcoal
   src/              editable masters (Affinity, Photoshop, legacy SVG)
   archive/          retired marks, kept as brand history
 fonts/              Cinzel Decorative + Inclusive Sans, vendored with licences
