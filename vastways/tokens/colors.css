@@ -1,0 +1,29 @@
+/* Vastways palette. The app maps these swatches to component roles. */
+:root {
+  --vw-page: #241827;
+  --vw-plum: #352038;
+  --vw-inset: #1d1320;
+  --vw-ivory: #fcf8f0;
+  --vw-secondary: #d5bfd3;
+  --vw-quiet: #baa3b9;
+  --vw-copper: #b76a36;
+  --vw-link: #f3b788;
+  --vw-hover: #ffd7b9;
+  --vw-focus: #ffca74;
+  --vw-control-border: #957592;
+  --vw-divider: #5d425d;
+  --vw-success: #9fd6a8;
+  --vw-warning: #ffd58c;
+  --vw-error: #f6a5b4;
+  --vw-info: #b8cef4;
+
+  /* The four project skins retain their genre accents. */
+  --vw-amethyst: #6c2dbd;
+  --vw-crimson: #8b3a3a;
+  --vw-cyan: #39d0ff;
+  --vw-emerald: #2f6b4f;
+  --vw-gold: #c8a46e;
+  --vw-magenta: #ff4fd6;
+  --vw-neon-green: #9eff5b;
+  --vw-plasma-blue: #4286f4;
+}
