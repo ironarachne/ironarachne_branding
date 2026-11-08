@@ -1,0 +1,23 @@
+{
+  "name": "Vastways",
+  "short_name": "Vastways",
+  "description": "A browser-based workshop for building tabletop role-playing worlds.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#241827",
+  "theme_color": "#352038",
+  "icons": [
+    {
+      "src": "vastways-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "vastways-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

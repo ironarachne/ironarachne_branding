@@ -4,6 +4,8 @@ Brand strategy, identity system, and logo assets for
 [Iron Arachne](https://ironarachne.com) — procedural generators for tabletop
 roleplaying games.
 
+The [Vastways app identity](vastways/) has its own artwork, palette and distribution.
+
 ## Start here
 
 | | |
